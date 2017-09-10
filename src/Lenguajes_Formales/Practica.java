@@ -30,7 +30,7 @@ public class Practica {
             }
             //ACOMODO
             lenguaje.acomodo();
-            //CHEQUEO
+            //CHEQUEOf
             if(lenguaje.checar()){
                 System.out.println("W:"+lenguaje.getW() + " es acapetada en L*:{" + lenguaje.getLenguajeString()+"}*");
             }else {
