@@ -1,7 +1,7 @@
 package Lenguajes_Formales;
 
-import java.util.ArrayList;
-import java.util.Comparator;
+import javax.swing.text.html.HTML;
+import java.util.*;
 
 /**
  * Created by Palafox on 01/09/2017.
@@ -10,8 +10,16 @@ public class Lenguaje {
     private String lenguajeString;
     private String abc;
     private String w;
-    private ArrayList<String> lenguajeArray;
+    private HashMap<Character,ArrayList<String>> lenguajeMap;
     private String error;
+
+    public HashMap<Character, ArrayList<String>> getLenguajeMap() {
+        return lenguajeMap;
+    }
+
+    public void setLenguajeMap(HashMap<Character, ArrayList<String>> lenguajeMap) {
+        this.lenguajeMap = lenguajeMap;
+    }
 
     public String getError() {
         return error;
@@ -22,10 +30,11 @@ public class Lenguaje {
     }
 
     public Lenguaje(String abc, String lenguajeString, String W) {
-        setLenguajeString(lenguajeString);
+        setLenguajeString(lenguajeString+" ");
         setAbc(abc);
         setW(W);
-        setLenguajeArray(arrayLengueje(getLenguajeString()));
+        setError("");
+        setLenguajeMap(hashMap(getLenguajeString()));
     }
 
     public String getLenguajeString() {
@@ -34,14 +43,6 @@ public class Lenguaje {
 
     public void setLenguajeString(String lenguajeString) {
         this.lenguajeString = lenguajeString;
-    }
-
-    public ArrayList<String> getLenguajeArray() {
-        return lenguajeArray;
-    }
-
-    public void setLenguajeArray(ArrayList<String> lenguajeArray) {
-        this.lenguajeArray = lenguajeArray;
     }
 
     public String getW() {
@@ -60,18 +61,32 @@ public class Lenguaje {
         this.abc = abc;
     }
 
-    private   ArrayList<String> arrayLengueje(String Lenguaje){
-        ArrayList<String> arrayList = new ArrayList<>();
+    private static HashMap<Character,ArrayList<String>> hashMap(String Lenguaje){
+        HashMap<Character, ArrayList<String>> hashMap =  new HashMap<>();
         int whereX=0;
         for(int x=0;x<Lenguaje.length();x++){
-            if (Lenguaje.charAt(x)==','){
-                arrayList.add(Lenguaje.substring(whereX,x));
+            if (Lenguaje.charAt(x)==',' || x==Lenguaje.length()-1){
+                if(hashMap.containsKey(Lenguaje.charAt(whereX))){
+                        hashMap.get(Lenguaje.charAt(whereX)).add(Lenguaje.substring(whereX,x));
+                }else{
+                    ArrayList<String> newArrayList =  new ArrayList<String>();
+                    newArrayList.add(Lenguaje.substring(whereX,x));
+                    hashMap.put(Lenguaje.charAt(whereX), newArrayList);
+                }
                 whereX = x+1;
-            }else if(x==Lenguaje.length()-1){
-                arrayList.add(Lenguaje.substring(whereX));
             }
         }
-        return arrayList;
+
+        for(Character x : hashMap.keySet()){
+            hashMap.get(x).sort(new Comparator<String>() {
+                @Override
+                public int compare(String o1, String o2) {
+                    return o1.length()< o2.length() ? 1:-1;
+                }
+            });
+        }
+
+        return hashMap;
     }
 
     public  boolean pertenece (){
@@ -95,37 +110,26 @@ public class Lenguaje {
         return false;
     }
 
-    public boolean contiene(String subW){
-        return getLenguajeArray().contains(subW);
-    }
 
-    public boolean checar(){
+    public  boolean checar(){
         int p1=0;
         int p2=getW().length();
         while (true){
-            for(int x=0; x<getLenguajeArray().size();x++){
-                if((p2-p1)>=getLenguajeArray().get(x).length() && contiene(getW().substring(p1,p1+getLenguajeArray().get(x).length()))){
-                        p1+=getLenguajeArray().get(x).length();
-                        break;
-                }else if(x==getLenguajeArray().size()-1){
+            for(String x: getLenguajeMap().get(getW().charAt(p1))){
+                if((p2-p1)>=x.length() && x.equals(getW().substring(p1,p1+x.length()))){
+                    p1+=x.length();
+                    break;
+                }else if (x.equals(getLenguajeMap().get(getW().charAt(p1)).get(getLenguajeMap().get(getW().charAt(p1)).size()-1))){
                     setError(getW().substring(p1,p2));
                     return false;
                 }
             }
             if(p1==p2){
-                      break;
+                break;
             }
 
         }
         return true;
     }
 
-    public  void acomodo(){
-        getLenguajeArray().sort(new Comparator<String>() {
-            @Override
-            public int compare(String o1, String o2) {
-                return o1.length()< o2.length() ? 1:-1;
-            }
-        });
-    }
 }
