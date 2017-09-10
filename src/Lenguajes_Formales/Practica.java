@@ -21,7 +21,7 @@ public class Practica {
             String x2 =scanner.nextLine();
             String x3 =scanner.nextLine();
                 lenguaje = new Lenguaje(x1,x2,x3);
-           // }while (lenguaje.pertenece());
+           // }while (lenguaje.pertenece());s
             if(lenguaje.pertenece()){
                 if(scanner.nextLine().equals("1")) {
                     fin=false;
