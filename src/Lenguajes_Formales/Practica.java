@@ -28,7 +28,7 @@ public class Practica {
                 }
                 continue;
             }
-            //CHEQUEO
+            //CHEQUEOv
             if(lenguaje.checar()){
                 System.out.println("W:"+lenguaje.getW() + " es acapetada en L*:{" + lenguaje.getLenguajeString()+"}*");
             }else {
