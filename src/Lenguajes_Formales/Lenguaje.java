@@ -30,7 +30,7 @@ public class Lenguaje {
     }
 
     public Lenguaje(String abc, String lenguajeString, String W) {
-        setLenguajeString(lenguajeString+" ");
+        setLenguajeString(lenguajeString);
         setAbc(abc);
         setW(W);
         setError("");
@@ -65,7 +65,7 @@ public class Lenguaje {
         HashMap<Character, ArrayList<String>> hashMap =  new HashMap<>();
         int whereX=0;
         for(int x=0;x<Lenguaje.length();x++){
-            if (Lenguaje.charAt(x)==',' || x==Lenguaje.length()-1){
+            if (Lenguaje.charAt(x)==','){
                 if(hashMap.containsKey(Lenguaje.charAt(whereX))){
                         hashMap.get(Lenguaje.charAt(whereX)).add(Lenguaje.substring(whereX,x));
                 }else{
@@ -74,6 +74,14 @@ public class Lenguaje {
                     hashMap.put(Lenguaje.charAt(whereX), newArrayList);
                 }
                 whereX = x+1;
+            }else if (x==Lenguaje.length()-1){
+                if(hashMap.containsKey(Lenguaje.charAt(whereX))){
+                    hashMap.get(Lenguaje.charAt(whereX)).add(Lenguaje.substring(whereX,x+1));
+                }else{
+                    ArrayList<String> newArrayList =  new ArrayList<String>();
+                    newArrayList.add(Lenguaje.substring(whereX,x+1));
+                    hashMap.put(Lenguaje.charAt(whereX), newArrayList);
+                }
             }
         }
 
@@ -115,17 +123,22 @@ public class Lenguaje {
         int p1=0;
         int p2=getW().length();
         while (true){
-            for(String x: getLenguajeMap().get(getW().charAt(p1))){
-                if((p2-p1)>=x.length() && x.equals(getW().substring(p1,p1+x.length()))){
-                    p1+=x.length();
-                    break;
-                }else if (x.equals(getLenguajeMap().get(getW().charAt(p1)).get(getLenguajeMap().get(getW().charAt(p1)).size()-1))){
-                    setError(getW().substring(p1,p2));
-                    return false;
-                }
-            }
             if(p1==p2){
                 break;
+            }else if(getLenguajeMap().containsKey(getW().charAt(p1))){
+                for(String x: getLenguajeMap().get(getW().charAt(p1))){
+                    if((p2-p1)>=x.length() && x.equals(getW().substring(p1,p1+x.length()))){
+                        p1+=x.length();
+                        break;
+                    }else if (x.equals(getLenguajeMap().get(getW().charAt(p1)).get(getLenguajeMap().get(getW().charAt(p1)).size()-1))){
+                        setError(getW().substring(p1,p2));
+                        return false;
+                    }
+                }
+            }
+            else {
+                setError(getW().substring(p1,p2));
+                return false;
             }
 
         }
