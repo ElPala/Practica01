@@ -4,7 +4,7 @@ import javax.swing.text.html.HTML;
 import java.util.*;
 
 /**
- * Created by Palafox  on 01/09/2017.
+ * Created by Palafodx  on 01/09/2017.
  */
 public class Lenguaje {
     private String lenguajeString;
