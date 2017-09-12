@@ -76,7 +76,7 @@ public class Lenguaje {
     public   HashMap<Character,ArrayList<String>> hashMap(String Lenguaje){
         HashMap<Character, ArrayList<String>> hashMap =  new HashMap<>(); //Se crea el HashMap
         int whereX=0;  //Puntero para saber en que parte del String estoy
-        for(int x=0;x<Lenguaje.length();x++){ //Se itera todo el string
+        for(int x=0;x<Lenguaje.length();x++){ //Se itera el string
             if (Lenguaje.charAt(x)==','){
                 //Si se detecta un "," se ejecuta
                 if(hashMap.containsKey(Lenguaje.charAt(whereX))){
@@ -116,21 +116,16 @@ public class Lenguaje {
 
     //Checa si el Lenguaje pertenece al Abecedario
     public  boolean pertenece (){
-        boolean estado=true;
-        for(int x=0;x<getLenguajeString().length();x++){
-            for(int y=0; y<=getAbc().length(); y=y+2){
-                if(getLenguajeString().charAt(x)== ','){
+        getLenguajeMap().put('f',null);
+        for(int x=0;x<getLenguajeString().length();x++){ //Se itera el string y se compara con el lenguaje
+            for(int y=0; y<=getAbc().length(); y=y+2){ //Se va iterando de dos en dos, puesto que el lenguaje esta dado a,b,c...
+                if(getLenguajeString().charAt(x)== ',' || getLenguajeString().charAt(x)== getAbc().charAt(y)){
+                    //Se ingnoran las "," y si se encuentra W[x] en abecedario[y], se deja de buscar.
                     break;
-                }else if(getLenguajeString().charAt(x)== getAbc().charAt(y)){
-                    estado=true;
-                    break;
-                }else{
-                    estado=false;
+                }else if(y==getAbc().length()-1){ //Si se llega al TOPE del Abecedario, entonces W[x]  no existe en el Abecedario.
+                    System.out.println("El alfabeto no concuerda con L, "+getLenguajeString().charAt(x)+" no pertence al alfabeto:{"+getAbc()+"}");
+                    return true;
                 }
-            }
-            if (estado==false){
-                System.out.println("El alfabeto no concuerda con L, "+getLenguajeString().charAt(x)+" no pertence al alfabeto:{"+getAbc()+"}");
-                return true;
             }
         }
         return false;
