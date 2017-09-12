@@ -1,6 +1,7 @@
 a,b
 a,aa,b
 abaa
+baa
 0
 a,b,c
 ab,aacc,aba,aaaac,acc
@@ -20,14 +21,16 @@ aababddaaabab
 0
 a,b
 a,ac,b
-abaac
+a,b
+a,aa,b
+abaa
 0
 a,b,c
 a,ac,b
 abaac
 0
 a,o,l, ,h,d,x
-hol,a,xd, 
+hol,a,xd,
 xd xd hola xd
 0
 a,b,c
@@ -35,7 +38,7 @@ abb,ac,a
 abbacad
 0
 a,o,l, ,h,D,x,c,m,e,s,t,
-hol,a,xD, como ,es,tas 
+hol,a,xD, como ,es,tas
 hola como estas xD
 0
 a,b
