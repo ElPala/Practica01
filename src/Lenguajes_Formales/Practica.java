@@ -9,39 +9,39 @@ public class Practica {
     public static void main(String[] args) {
         //VARIABLES
         Lenguaje lenguaje;
-        boolean estado=true;
+        boolean estado = true;
         Scanner scanner = new Scanner(System.in);
         //CICLOS
         System.out.println("Abecedario + Lenguaje + [Cadena | 0 | 1]:"); //Con 0 se pide un nuevo abecedario y lenguaje, con 1 se termina el programa
-        do{
+        do {
 
-                //System.out.println("Abecedario:");
-                //Lectura de datos
-                //Abecedario
-                String x1 = scanner.nextLine();
-                //Lenguaje
-              //  System.out.println("Lengueje:");
-                String x2 = scanner.nextLine();
-                //Se crea un nuevo lenguaje
-                lenguaje = new Lenguaje(x1, x2, "");
-                //Se checa el lenguaje con el abcedario
-                if (lenguaje.pertenece()) {
-                    //Si se entra aqui, entonces el lenguaje no concuerda
-                    break;
-                }
-            System.out.println("Abecedario: {"+lenguaje.getAbc()+"}");
-            System.out.println("Lenguaje: {"+lenguaje.getLenguajeString()+"}");
+            //System.out.println("Abecedario:");
+            //Lectura de datos
+            //Abecedario
+            String x1 = scanner.nextLine();
+            //Lenguaje
+            //  System.out.println("Lengueje:");
+            String x2 = scanner.nextLine();
+            //Se crea un nuevo lenguaje
+            lenguaje = new Lenguaje(x1, x2, "");
+            //Se checa el lenguaje con el abcedario
+            if (lenguaje.pertenece()) {
+                //Si se entra aqui, entonces el lenguaje no concuerda
+                break;
+            }
+            System.out.println("Abecedario: {" + lenguaje.getAbc() + "}");
+            System.out.println("Lenguaje: {" + lenguaje.getLenguajeString() + "}");
             //System.out.println("W:");
             while (true) {
                 //W
                 String x3 = scanner.nextLine();
                 if (x3.equals("1")) {// System.out.println("¿Terminaste? 1(Si)");
-                    estado=false;
+                    estado = false;
                     break;
                 } else if (x3.equals("0")) {
                     System.out.println();
                     break;
-                }else {
+                } else {
                     //Se checa que el lenguaje coincida con W
                     lenguaje.setW(x3);
                     if (lenguaje.checar()) {
@@ -51,7 +51,7 @@ public class Practica {
                     }
                 }
             }
-    }while(estado);
+        } while (estado);
 
 
     }
