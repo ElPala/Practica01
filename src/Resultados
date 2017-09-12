@@ -1,0 +1,51 @@
+Abecedario: {a,b}
+Lenguaje: {a,aa,b}
+W:abaa es acapetada en L*:{a,aa,b}*
+W:baa es acapetada en L*:{a,aa,b}*
+
+Abecedario: {a,b,c}
+Lenguaje: {ab,aacc,aba,aaaac,acc}
+W:aaaacabaacc es acapetada en L*:{ab,aacc,aba,aaaac,acc}*
+W:accc es rechazada en L*:{ab,aacc,aba,aaaac,acc}*, {c} no pertence a L
+
+Abecedario: {a,b}
+Lenguaje: {aab,ab}
+W:aababb es rechazada en L*:{aab,ab}*, {b} no pertence a L
+W:ababab es acapetada en L*:{aab,ab}*
+
+Abecedario: {a,b,d}
+Lenguaje: {aab,ab,dda}
+W:aababbddaaab es rechazada en L*:{aab,ab,dda}*, {bddaaab} no pertence a L
+
+Abecedario: {a,b,d}
+Lenguaje: {aab,ab,dda}
+W:aababddaaabab es acapetada en L*:{aab,ab,dda}*
+W:aabab es acapetada en L*:{aab,ab,dda}*
+
+Abecedario: {a,b}
+Lenguaje: {a,aa,b}
+W:abaa es acapetada en L*:{a,aa,b}*
+
+Abecedario: {a,b,c}
+Lenguaje: {a,ac,b}
+W:abaac es acapetada en L*:{a,ac,b}*
+
+Abecedario: {a,o,l, ,h,d,x}
+Lenguaje: {hol,a,xd,}
+W:xd xd hola xd es rechazada en L*:{hol,a,xd,}*, { xd hola xd} no pertence a L
+W:xd xd xd xd es rechazada en L*:{hol,a,xd,}*, { xd xd xd} no pertence a L
+
+Abecedario: {a,b,c}
+Lenguaje: {abb,ac,a}
+W:abbacad es rechazada en L*:{abb,ac,a}*, {d} no pertence a L
+
+Abecedario: {a,o,l, ,h,D,x,c,m,e,s,t,}
+Lenguaje: {hol,a,xD, como ,es,tas}
+W:hola como estas xD es rechazada en L*:{hol,a,xD, como ,es,tas}*, { xD} no pertence a L
+W:holholaaaaaa es acapetada en L*:{hol,a,xD, como ,es,tas}*
+
+Abecedario: {a,b}
+Lenguaje: {aaaaaaaaaaaaaaaaaaaaaaaaab,ba,baaaaa,bb}
+W:aaaaaaaaaaaaaaaaaaaaaaaaabbabbbaaaaa es acapetada en L*:{aaaaaaaaaaaaaaaaaaaaaaaaab,ba,baaaaa,bb}*
+
+Process finished with exit code 0
