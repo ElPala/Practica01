@@ -25,7 +25,7 @@ public class Practica {
             //Se checa el lenguaje con el abcedario
             if (lenguaje.pertenece()) {
                 //Si se entra aqui, entonces el lenguaje no concuerda
-                if (scanner.nextLine().equals("1")) {
+                if (scanner.nextLine().equals("1")) { // System.out.println("¿Terminaste? 1(Si)/ 0(NO)");
                     //si se entra aqui, es que se acabo el programa
                     break;
                 } else {
