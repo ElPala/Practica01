@@ -11,39 +11,40 @@ public class Practica {
         Lenguaje lenguaje;
         Scanner scanner = new Scanner(System.in);
         //CICLOS
-        System.out.println("Abecedario|Lengueje|W:");
-        do {
+        while(true) {
+            System.out.println("Abecedario:");
             //Lectura de datos
             //Abecedario
             String x1 = scanner.nextLine();
             //Lenguaje
+            System.out.println("Lengueje:");
             String x2 = scanner.nextLine();
-            //W
-            String x3 = scanner.nextLine();
             //Se crea un nuevo lenguaje
-            lenguaje = new Lenguaje(x1, x2, x3);
+            lenguaje = new Lenguaje(x1, x2, "");
             //Se checa el lenguaje con el abcedario
             if (lenguaje.pertenece()) {
                 //Si se entra aqui, entonces el lenguaje no concuerda
-                if (scanner.nextLine().equals("1")) { // System.out.println("¿Terminaste? 1(Si)/ 0(NO)");
-                    //si se entra aqui, es que se acabo el programa
-                    break;
-                } else {
-                    //se rebobina
-                    continue;
-                }
+                continue;
+            }else {
+                break;
             }
+        }
+        System.out.println("W:");
+         while(true) {
+             //W
+             String x3 = scanner.nextLine();
+             if (x3.equals("0")) {// System.out.println("¿Terminaste? 1(Si)");
+                 break;
+             }
             //Se checa que el lenguaje coincida con W
+             lenguaje.setW(x3);
             if (lenguaje.checar()) {
                 System.out.println("W:" + lenguaje.getW() + " es acapetada en L*:{" + lenguaje.getLenguajeString() + "}*");
             } else {
                 System.out.println("W:" + lenguaje.getW() + " es rechazada en L*:{" + lenguaje.getLenguajeString() + "}*, " + "{" + lenguaje.getError() + "} no pertence a L");
             }
-            // System.out.println("¿Terminaste? 1(Si)/ 0(NO)");
-            if (scanner.nextLine().equals("1")) {
-                break;
-            }
-        } while (true);
+
+        }
 
 
     }
