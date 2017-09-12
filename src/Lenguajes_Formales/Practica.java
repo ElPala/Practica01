@@ -13,25 +13,23 @@ public class Practica {
         Scanner scanner = new Scanner(System.in);
         //CICLOS
         do{
-            while (true) {
-                System.out.println("Abecedario:");
+
+                //System.out.println("Abecedario:");
                 //Lectura de datos
                 //Abecedario
                 String x1 = scanner.nextLine();
                 //Lenguaje
-                System.out.println("Lengueje:");
+              //  System.out.println("Lengueje:");
                 String x2 = scanner.nextLine();
                 //Se crea un nuevo lenguaje
                 lenguaje = new Lenguaje(x1, x2, "");
                 //Se checa el lenguaje con el abcedario
                 if (lenguaje.pertenece()) {
                     //Si se entra aqui, entonces el lenguaje no concuerda
-                    continue;
-                } else {
                     break;
                 }
-            }
-            System.out.println("W:");
+
+            //System.out.println("W:");
             while (true) {
                 //W
                 String x3 = scanner.nextLine();
