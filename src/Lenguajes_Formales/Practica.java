@@ -1,9 +1,8 @@
 package Lenguajes_Formales;
-
 import java.util.Scanner;
 
 /*
- * Created by Palafox  on 01/09/2017.
+ * Created on 01/09/2017.
  */
 public class Practica {
     public static void main(String[] args) {
