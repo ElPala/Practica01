@@ -12,6 +12,7 @@ public class Practica {
         boolean estado=true;
         Scanner scanner = new Scanner(System.in);
         //CICLOS
+        System.out.println("Abecedario + Lenguaje + W");
         do{
 
                 //System.out.println("Abecedario:");
@@ -28,7 +29,8 @@ public class Practica {
                     //Si se entra aqui, entonces el lenguaje no concuerda
                     break;
                 }
-
+            System.out.println("Abecedario: {"+lenguaje.getAbc()+"}");
+            System.out.println("Lenguaje: {"+lenguaje.getLenguajeString()+"}");
             //System.out.println("W:");
             while (true) {
                 //W
@@ -37,6 +39,7 @@ public class Practica {
                     estado=false;
                     break;
                 } else if (x3.equals("0")) {
+                    System.out.println();
                     break;
                 }else {
                     //Se checa que el lenguaje coincida con W
