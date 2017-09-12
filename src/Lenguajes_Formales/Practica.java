@@ -8,38 +8,42 @@ import java.util.Scanner;
 public class Practica {
     public static void main(String[] args) {
         //VARIABLES
-        boolean fin = true;
         Lenguaje lenguaje;
         Scanner scanner = new Scanner(System.in);
         //CICLOS
         System.out.println("Abecedario|Lengueje|W:");
         do{
-            //DATOS
-           // do{
-               // System.out.println("Abecedario|Lengueje|W:");
+            //Lectura de datos
+            //Abecedario
             String x1 =scanner.nextLine();
+            //Lenguaje
             String x2 =scanner.nextLine();
+            //W
             String x3 =scanner.nextLine();
-                lenguaje = new Lenguaje(x1,x2,x3);
-           // }while (lenguaje.pertenece());s
+            //Se crea un nuevo lenguaje
+            lenguaje = new Lenguaje(x1,x2,x3);
+            //Se checa el lenguaje con el abcedario
             if(lenguaje.pertenece()){
+                //Si se entra aqui, entonces el lenguaje no concuerda
                 if(scanner.nextLine().equals("1")) {
-                    fin=false;
+                    //si se entra aqui, es que se acabo el programa
+                    break;
+                }else{
+                    //se rebobina
+                    continue;
                 }
-                continue;
             }
-            //CHEQUEOvd
+            //Se checa que el lenguaje coincida con W
             if(lenguaje.checar()){
                 System.out.println("W:"+lenguaje.getW() + " es acapetada en L*:{" + lenguaje.getLenguajeString()+"}*");
             }else {
                 System.out.println("W:"+lenguaje.getW() + " es rechazada en L*:{" + lenguaje.getLenguajeString() +"}*, "+"{"+lenguaje.getError()+"} no pertence a L" );
             }
-            //FIN
            // System.out.println("¿Terminaste? 1(Si)/ 0(NO)");
             if(scanner.nextLine().equals("1")) {
-                fin=false;
+                break;
             }
-        }while (fin);
+        }while (true);
 
 
 
