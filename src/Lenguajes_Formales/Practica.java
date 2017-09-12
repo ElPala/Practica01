@@ -12,7 +12,7 @@ public class Practica {
         boolean estado=true;
         Scanner scanner = new Scanner(System.in);
         //CICLOS
-        System.out.println("Abecedario + Lenguaje + W");
+        System.out.println("Abecedario + Lenguaje + [Cadena | 0 | 1]:"); //Con 0 se pide un nuevo abecedario y lenguaje, con 1 se termina el programa
         do{
 
                 //System.out.println("Abecedario:");
