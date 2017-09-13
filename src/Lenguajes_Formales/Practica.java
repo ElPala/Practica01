@@ -12,12 +12,12 @@ public class Practica {
         boolean estado = true;
         Scanner scanner = new Scanner(System.in);
         //CICLOS
-        System.out.println("Abecedario + Lenguaje + [Cadena | 0 | 1]:"); //Con 0 se pide un nuevo abecedario y lenguaje, con 1 se termina el programa
+        System.out.println("Alfabeto + Lenguaje + [Cadena | 0 | 1]:"); //Con 0 se pide un nuevo alfabeto y lenguaje, con 1 se termina el programa
         do {
 
-            //System.out.println("Abecedario:");
+            //System.out.println("Alfabeto:");
             //Lectura de datos
-            //Abecedario
+            //Alfabeto
             String x1 = scanner.nextLine();
             //Lenguaje
             //  System.out.println("Lengueje:");
@@ -29,7 +29,7 @@ public class Practica {
                 //Si se entra aqui, entonces el lenguaje no concuerda
                 break;
             }
-            System.out.println("Abecedario: {" + lenguaje.getAbc() + "}");
+            System.out.println("Alfabeto: {" + lenguaje.getAbc() + "}");
             System.out.println("Lenguaje: {" + lenguaje.getLenguajeString() + "}");
             //System.out.println("W:");
             while (true) {

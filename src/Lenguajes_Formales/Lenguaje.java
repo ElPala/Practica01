@@ -10,7 +10,7 @@ import java.util.HashMap;
 public class Lenguaje {
 
     private String lenguajeString; //Lenguaje en forma de String
-    private String abc; //Abcedario
+    private String abc; //alfabeto
     private String w; //W a analizar
     private HashMap<Character, ArrayList<String>> lenguajeMap; //HasMap donde se guarda el lenguaje segun el caracter
     private String error;//En caso de que se genere un error, se guarda
@@ -110,15 +110,15 @@ public class Lenguaje {
         return hashMap;
     }
 
-    //Checa si el Lenguaje pertenece al Abecedario
+    //Checa si el Lenguaje pertenece al alfabeto
     public boolean pertenece() {
         getLenguajeMap().put('f', null);
         for (int x = 0; x < getLenguajeString().length(); x++) { //Se itera el string y se compara con el lenguaje
             for (int y = 0; y <= getAbc().length(); y = y + 2) { //Se va iterando de dos en dos, puesto que el lenguaje esta dado a,b,c...
                 if (getLenguajeString().charAt(x) == ',' || getLenguajeString().charAt(x) == getAbc().charAt(y)) {
-                    //Se ingnoran las "," y si se encuentra W[x] en abecedario[y], se deja de buscar.
+                    //Se ingnoran las "," y si se encuentra W[x] en alfabeto[y], se deja de buscar.
                     break;
-                } else if (y == getAbc().length() - 1) { //Si se llega al TOPE del Abecedario, entonces W[x]  no existe en el Abecedario.
+                } else if (y == getAbc().length() - 1) { //Si se llega al TOPE del alfabeto, entonces W[x]  no existe en el alfabeto.
                     System.out.println("El alfabeto no concuerda con L, " + getLenguajeString().charAt(x) + " no pertence al alfabeto:{" + getAbc() + "}");
                     return true;
                 }
