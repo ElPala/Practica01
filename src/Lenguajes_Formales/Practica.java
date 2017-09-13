@@ -32,12 +32,10 @@ public class Practica {
             boolean estado = true;
             //CICLOS
             do {
-                //System.out.println("Alfabeto:");
                 //Lectura de datos
                 //Alfabeto
                 String x1 = bufferedReader.readLine();
                 //Lenguaje
-                //  System.out.println("Lengueje:");
                 String x2 = bufferedReader.readLine();
                 //Se crea un nuevo lenguaje
                 lenguaje = new Lenguaje(x1, x2, "");
@@ -53,12 +51,12 @@ public class Practica {
                 }
                 //System.out.println("W:");
                 while (true) {
-                    //W
+                    //Se agarran las sentencias
                     String x3 = bufferedReader.readLine();
                     if (x3.equals("1")) {// System.out.println("¿Terminaste? 1(Si)");
                         estado = false;
                         break;
-                    } else if (x3.equals("0")) {
+                    } else if (x3.equals("0")) {// System.out.println("¿Nuevo Lenguaje? 0(Si)");
                         total += "\n";
                         break;
                     } else {
@@ -81,7 +79,7 @@ public class Practica {
             scrollPane.setPreferredSize(new Dimension(500, 500));
             JOptionPane.showMessageDialog(null, scrollPane, "Resultados", JOptionPane.NO_OPTION);
         } catch (Exception e) {
-            //Hubo leyendo el archivo
+            //Hubo un error leyendo el archivo
             JOptionPane.showMessageDialog(null, "Archivo incorrecto", "ERROR", JOptionPane.ERROR_MESSAGE);
         }
 
