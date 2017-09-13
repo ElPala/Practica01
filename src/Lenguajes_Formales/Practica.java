@@ -15,6 +15,7 @@ public class Practica {
         //VARIABLES
         File file = null; //
         String total = "";
+        //Panel para agarrar el archivo que se va a scannear
         JButton open = new JButton();
         JFileChooser jFileChooser = new JFileChooser();
         jFileChooser.setCurrentDirectory(new java.io.File("C:\\Users\\Palaf\\Desktop"));
