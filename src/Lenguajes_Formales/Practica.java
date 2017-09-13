@@ -24,7 +24,7 @@ public class Practica {
             String x2 = scanner.nextLine();
             //Se crea un nuevo lenguaje
             lenguaje = new Lenguaje(x1, x2, "");
-            //Se checa el lenguaje con el abcedario
+            //Se checa el lenguaje con el alfabeto
             if (lenguaje.pertenece()) {
                 //Si se entra aqui, entonces el lenguaje no concuerda
                 break;

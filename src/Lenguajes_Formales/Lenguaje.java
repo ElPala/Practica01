@@ -19,7 +19,7 @@ public class Lenguaje {
     public Lenguaje(String abc, String lenguajeString, String W) {
         //Se asignan el Lenguaje
         setLenguajeString(lenguajeString);
-        //Se asigna el abecedario
+        //Se asigna el alfabeto
         setAbc(abc);
         //Se asigna el W
         setW(W);
