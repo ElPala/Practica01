@@ -1,0 +1,10 @@
+<component name="ArtifactManager">
+  <artifact type="jar" name="LenguejesFormales">
+    <output-path>$PROJECT_DIR$/out/artifacts/LenguejesFormales</output-path>
+    <root id="archive" name="LenguejesFormales.jar">
+      <element id="directory" name="META-INF">
+        <element id="file-copy" path="$PROJECT_DIR$/META-INF/MANIFEST.MF" />
+      </element>
+    </root>
+  </artifact>
+</component>

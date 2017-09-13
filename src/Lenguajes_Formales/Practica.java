@@ -1,5 +1,10 @@
 package Lenguajes_Formales;
 
+import javax.swing.*;
+import java.awt.*;
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileReader;
 import java.util.Scanner;
 
 /*
@@ -8,52 +13,74 @@ import java.util.Scanner;
 public class Practica {
     public static void main(String[] args) {
         //VARIABLES
-        Lenguaje lenguaje;
-        boolean estado = true;
-        Scanner scanner = new Scanner(System.in);
-        //CICLOS
-        System.out.println("Alfabeto + Lenguaje + [Cadena | 0 | 1]:"); //Con 0 se pide un nuevo alfabeto y lenguaje, con 1 se termina el programa
-        do {
+        File file = null;
+        String total = "";
+        JButton open = new JButton();
+        JFileChooser jFileChooser = new JFileChooser();
+        jFileChooser.setCurrentDirectory(new java.io.File("C:\\Users\\Palaf\\Desktop"));
+        jFileChooser.setDialogTitle("Alfabeto + Lenguaje + [Cadena | 0 | 1]");
+        jFileChooser.setFileSelectionMode(JFileChooser.FILES_ONLY);
+        if (jFileChooser.showOpenDialog(open) == JFileChooser.APPROVE_OPTION) {
+            file = jFileChooser.getSelectedFile();
+        }
 
-            //System.out.println("Alfabeto:");
-            //Lectura de datos
-            //Alfabeto
-            String x1 = scanner.nextLine();
-            //Lenguaje
-            //  System.out.println("Lengueje:");
-            String x2 = scanner.nextLine();
-            //Se crea un nuevo lenguaje
-            lenguaje = new Lenguaje(x1, x2, "");
-            //Se checa el lenguaje con el alfabeto
-            if (lenguaje.pertenece()) {
-                //Si se entra aqui, entonces el lenguaje no concuerda
-                break;
-            }
-            System.out.println("Alfabeto: {" + lenguaje.getAbc() + "}");
-            System.out.println("Lenguaje: {" + lenguaje.getLenguajeString() + "}");
-            //System.out.println("W:");
-            while (true) {
-                //W
-                String x3 = scanner.nextLine();
-                if (x3.equals("1")) {// System.out.println("¿Terminaste? 1(Si)");
-                    estado = false;
+        try {
+            BufferedReader bufferedReader;
+            bufferedReader = new BufferedReader(new FileReader(file.toString()));
+            Lenguaje lenguaje;
+            boolean estado = true;
+            //CICLOS
+            do {
+                //System.out.println("Alfabeto:");
+                //Lectura de datos
+                //Alfabeto
+                String x1 = bufferedReader.readLine();
+                //Lenguaje
+                //  System.out.println("Lengueje:");
+                String x2 = bufferedReader.readLine();
+                //Se crea un nuevo lenguaje
+                lenguaje = new Lenguaje(x1, x2, "");
+                //Se checa el lenguaje con el alfabeto
+                if (lenguaje.pertenece()) {
+                    //Si se entra aqui, entonces el lenguaje no concuerda
                     break;
-                } else if (x3.equals("0")) {
-                    System.out.println();
-                    break;
-                } else {
-                    //Se checa que el lenguaje coincida con W
-                    lenguaje.setW(x3);
-                    if (lenguaje.checar()) {
-                        System.out.println("W:" + lenguaje.getW() + " es acapetada en L*:{" + lenguaje.getLenguajeString() + "}*");
+                }
+                total += "Alfabeto: {" + lenguaje.getAbc() + "}\n";
+                total += "Lenguaje: {" + lenguaje.getLenguajeString() + "}\n";
+                //System.out.println("W:");
+                while (true) {
+                    //W
+                    String x3 = bufferedReader.readLine();
+                    if (x3.equals("1")) {// System.out.println("¿Terminaste? 1(Si)");
+                        estado = false;
+                        break;
+                    } else if (x3.equals("0")) {
+                        total += "\n";
+                        break;
                     } else {
-                        System.out.println("W:" + lenguaje.getW() + " es rechazada en L*:{" + lenguaje.getLenguajeString() + "}*, " + "{" + lenguaje.getError() + "} no pertence a L");
+                        //Se checa que el lenguaje coincida con W
+                        lenguaje.setW(x3);
+                        if (lenguaje.checar()) {
+                            total += "W:" + lenguaje.getW() + " es acapetada en L*:{" + lenguaje.getLenguajeString() + "}*\n";
+                        } else {
+                            total += "W:" + lenguaje.getW() + " es rechazada en L*:{" + lenguaje.getLenguajeString() + "}*, " + "{" + lenguaje.getError() + "} no pertence a L\n";
+                        }
                     }
                 }
-            }
-        } while (estado);
+            } while (estado);
 
+        } catch (Exception e) {
+            System.out.println(e.toString());
+        }
+        JTextArea textArea = new JTextArea(total);
+        JScrollPane scrollPane = new JScrollPane(textArea);
+        textArea.setLineWrap(true);
+        textArea.setWrapStyleWord(true);
+        scrollPane.setPreferredSize(new Dimension(500, 500));
+
+        JOptionPane.showMessageDialog(null, scrollPane, "Resultados", JOptionPane.NO_OPTION);
 
     }
+
 
 }
