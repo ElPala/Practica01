@@ -8,7 +8,6 @@ import java.util.HashMap;
  * Created on 01/09/2017.
  */
 public class Lenguaje {
-
     private String lenguajeString; //Lenguaje en forma de String
     private String abc; //alfabeto
     private String w; //W a analizar
@@ -119,7 +118,8 @@ public class Lenguaje {
                     //Se ingnoran las "," y si se encuentra W[x] en alfabeto[y], se deja de buscar.
                     break;
                 } else if (y == getAbc().length() - 1) { //Si se llega al TOPE del alfabeto, entonces W[x]  no existe en el alfabeto.
-                    System.out.println("El alfabeto no concuerda con L, " + getLenguajeString().charAt(x) + " no pertence al alfabeto:{" + getAbc() + "}");
+
+                    setError("El alfabeto no concuerda con L, " + getLenguajeString().charAt(x) + " no pertence al alfabeto:{" + getAbc() + "}");
                     return true;
                 }
             }

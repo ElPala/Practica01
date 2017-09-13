@@ -1,4 +1,5 @@
 Manifest-Version: 1.0
 Class-Path: C:\Program Files\Java\jdk1.8.0_101\jre\lib
-Main-Class: Lenguajes_Formales.Practica
-
+Main-Class:
+Rsrc-Class-Path: ./
+Class-Path: .SDSDASD

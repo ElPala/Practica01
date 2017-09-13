@@ -13,7 +13,7 @@ import java.util.Scanner;
 public class Practica {
     public static void main(String[] args) {
         //VARIABLES
-        File file = null;
+        File file = null; //
         String total = "";
         JButton open = new JButton();
         JFileChooser jFileChooser = new JFileChooser();
@@ -41,12 +41,15 @@ public class Practica {
                 //Se crea un nuevo lenguaje
                 lenguaje = new Lenguaje(x1, x2, "");
                 //Se checa el lenguaje con el alfabeto
+
+                total += "Alfabeto: {" + lenguaje.getAbc() + "}\n";
+                total += "Lenguaje: {" + lenguaje.getLenguajeString() + "}\n";
                 if (lenguaje.pertenece()) {
+
+                    total += lenguaje.getError() + "\n";
                     //Si se entra aqui, entonces el lenguaje no concuerda
                     break;
                 }
-                total += "Alfabeto: {" + lenguaje.getAbc() + "}\n";
-                total += "Lenguaje: {" + lenguaje.getLenguajeString() + "}\n";
                 //System.out.println("W:");
                 while (true) {
                     //W
@@ -69,16 +72,17 @@ public class Practica {
                 }
             } while (estado);
 
+            //Se crea una ventana con scroll, para displeyar los resultados
+            JTextArea textArea = new JTextArea(total);
+            JScrollPane scrollPane = new JScrollPane(textArea);
+            textArea.setLineWrap(true);
+            textArea.setWrapStyleWord(true);
+            scrollPane.setPreferredSize(new Dimension(500, 500));
+            JOptionPane.showMessageDialog(null, scrollPane, "Resultados", JOptionPane.NO_OPTION);
         } catch (Exception e) {
-            System.out.println(e.toString());
+            //Hubo leyendo el archivo
+            JOptionPane.showMessageDialog(null, "Archivo incorrecto", "ERROR", JOptionPane.ERROR_MESSAGE);
         }
-        JTextArea textArea = new JTextArea(total);
-        JScrollPane scrollPane = new JScrollPane(textArea);
-        textArea.setLineWrap(true);
-        textArea.setWrapStyleWord(true);
-        scrollPane.setPreferredSize(new Dimension(500, 500));
-
-        JOptionPane.showMessageDialog(null, scrollPane, "Resultados", JOptionPane.NO_OPTION);
 
     }
 
